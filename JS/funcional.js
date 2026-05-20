@@ -33,30 +33,35 @@ let m = {
         {
 
             case "numero":
-                if (p.operaciones.innerHTML == "0" || p.resultado){
+                //console.log("numero");
+                if (p.operaciones.innerHTML == 0){
                     p.operaciones.innerHTML = p.digito;
-                }   else {
+                } else{
                     p.operaciones.innerHTML += p.digito;
                 }
-                //console.log("numero");
-                break;
+            break;
 
-                case "signo":
-                //console.log("signo");
-                break;
+            case "signo":
+            //console.log("signo");
+            p.operaciones.innerHTML += p.digito;
+            break;
 
-                case "decimal":
-                //console.log("decimal");
-                break;
+            case "decimal":
+                p.operaciones.innerHTML += p.digito;
+            //console.log("decimal");
+            break;
 
-                case "igual":
+            case "igual":
                 //console.log("igual");
-                break;
+                p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
+            break;
         
         }
+},
+    borrarcalculadora : function(){
+        p.operaciones.innerHTML = 0;
 
-}
-
+    }
 }
 
 m.inicio();
