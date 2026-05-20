@@ -17,7 +17,7 @@ let m = {
         for(let i = 0; i < p.teclas.length; i++){
             p.teclas[i].addEventListener("click", m.oprimirtecla);
         }
-       
+         document.addEventListener("keydown", m.oprimirteclateclado);
     },
 
     oprimirtecla : function(tecla){
@@ -27,13 +27,40 @@ let m = {
 
     },
 
+    oprimirteclateclado : function(evento){
+    let tecla = evento.key;
+
+    if(!isNaN(tecla) && tecla !== ' '){
+        p.accion = "numero";
+        p.digito = tecla;
+        m.calculadora(p.accion);
+    }
+    else if(['+', '-', '*', '/'].includes(tecla)){
+        p.accion = "signo";
+        p.digito = tecla;
+        m.calculadora(p.accion);
+    }
+    else if(tecla === '.'){
+        p.accion = "decimal";
+        p.digito = ".";
+        m.calculadora(p.accion);
+    }
+    else if(tecla === 'Enter' || tecla === '='){
+        evento.preventDefault();
+        p.accion = "igual";
+        m.calculadora(p.accion);
+    }
+    else if(tecla === 'Backspace' || tecla === 'Escape'){
+        m.borrarcalculadora();
+    }
+},
+
     calculadora : function(accion){
 
         switch(accion)
         {
 
             case "numero":
-                //console.log("numero");
                 if (p.operaciones.innerHTML == 0){
                     p.operaciones.innerHTML = p.digito;
                 } else{
@@ -42,17 +69,21 @@ let m = {
             break;
 
             case "signo":
-            //console.log("signo");
-            p.operaciones.innerHTML += p.digito;
+            let ultimoCaracter = p.operaciones.innerHTML.slice(-1);
+            let operadores = ['+', '-', '*', '/'];
+
+            if (operadores.includes(ultimoCaracter)) {
+                p.operaciones.innerHTML = p.operaciones.innerHTML.slice(0, -1) + p.digito;
+            } else {
+                p.operaciones.innerHTML += p.digito;
+            }
             break;
 
             case "decimal":
                 p.operaciones.innerHTML += p.digito;
-            //console.log("decimal");
             break;
 
             case "igual":
-                //console.log("igual");
                 p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
             break;
         
