@@ -35,7 +35,7 @@ let m = {
         p.digito = tecla;
         m.calculadora(p.accion);
     }
-    else if(['+', '-', '*', '/'].includes(tecla)){
+    else if(['+', '-', '*', '/', '^'].includes(tecla)){
         p.accion = "signo";
         p.digito = tecla;
         m.calculadora(p.accion);
@@ -92,13 +92,8 @@ let m = {
                     break;
                 }
 
-                if (p.digito = "x²"){
-                    let numero = parseFloat(p.operaciones.innerHTML);
-                    p.operaciones.innerHTML = Math.pow(numero)
-                }
-
                 let ultimoSigno = p.operaciones.innerHTML.slice(-1);
-                let operadores = ['+', '-', '*', '/'];
+                let operadores = ['+', '-', '*', '/', '^'];
 
                 if (operadores.includes(ultimoSigno)) {
                     p.operaciones.innerHTML = p.operaciones.innerHTML.slice(0, -1) + p.digito;
@@ -113,14 +108,15 @@ let m = {
             break;
 
             case "igual":
-                if (p.operaciones.innerHTML.includes("/0")){
-                    p.operaciones.innerHTML = "Error"
-                }else{
-                    p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
+                try {
+                    let operacion = p.operaciones.innerHTML.replace("^", "**");
+                    p.operaciones.innerHTML = eval(operacion);
+                } catch (error) {
+                    p.operaciones.innerHTML = "Error";
                 }
             break;
-        }
-},
+        }        
+    },
     borrarcalculadora : function(){
         p.operaciones.innerHTML = 0;
 
