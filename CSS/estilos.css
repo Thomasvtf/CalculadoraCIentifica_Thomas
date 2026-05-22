@@ -53,7 +53,7 @@ h1{
     font-size: 1.3rem;
     font-weight: bold;
     cursor: pointer;
-
+    color: #ffffff;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
 
@@ -66,6 +66,25 @@ h1{
     color: white;
     transform: scale(1.05);
 }
+
+.funcion{
+    background: #646464;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ffffff;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.funcion:hover{
+    background: #a0a0a0;
+    color: white;
+    transform: scale(1.05);
+}
+
 .signo{
     background: #646464;
     padding: 20px;
@@ -73,11 +92,8 @@ h1{
     font-size: 1.3rem;
     font-weight: bold;
     cursor: pointer;
-
-    
+    color: #ffffff;
     border-radius: 15px;
-
-    
     transition: all 0.3s ease;
 }
 
@@ -86,6 +102,7 @@ h1{
     color: white;
     transform: scale(1.05);
 }
+
 .decimal{
     background: #646464;
     padding: 20px;
@@ -93,11 +110,8 @@ h1{
     font-size: 1.3rem;
     font-weight: bold;
     cursor: pointer;
-
-    
+    color: #ffffff;   
     border-radius: 15px;
-
-    
     transition: all 0.3s ease;
 }
 
@@ -106,6 +120,7 @@ h1{
     color: white;
     transform: scale(1.05);
 }
+
 .igual{
     background: #646464;
     padding: 20px;
@@ -113,11 +128,8 @@ h1{
     font-size: 1.3rem;
     font-weight: bold;
     cursor: pointer;
-
-    
+    color: #ffffff;    
     border-radius: 15px;
-
-    
     transition: all 0.3s ease;
 }
 

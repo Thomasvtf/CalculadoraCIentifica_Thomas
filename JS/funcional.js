@@ -69,14 +69,24 @@ let m = {
             break;
 
             case "signo":
-            let ultimoCaracter = p.operaciones.innerHTML.slice(-1);
-            let operadores = ['+', '-', '*', '/'];
+                let ultimoSigno = p.operaciones.innerHTML.slice(-1);
+                let operadores = ['+', '-', '*', '/'];
 
-            if (operadores.includes(ultimoCaracter)) {
-                p.operaciones.innerHTML = p.operaciones.innerHTML.slice(0, -1) + p.digito;
-            } else {
-                p.operaciones.innerHTML += p.digito;
-            }
+                if (operadores.includes(ultimoSigno)) {
+                    p.operaciones.innerHTML = p.operaciones.innerHTML.slice(0, -1) + p.digito;
+                } else {
+                    p.operaciones.innerHTML += p.digito;
+                }
+
+                if (p.digito == "√"){
+                    let numero = parseFloat(p.operaciones.innerHTML);
+
+                    if (numero < 0){
+                        p.operaciones.innerHTML = "Error"
+                    }else{
+                        p.operaciones.innerHTML = Math.sqrt(numero);
+                    }
+                }
             break;
 
             case "decimal":
@@ -90,7 +100,6 @@ let m = {
                     p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
                 }
             break;
-        
         }
 },
     borrarcalculadora : function(){
