@@ -69,6 +69,29 @@ let m = {
             break;
 
             case "signo":
+                
+                if (p.digito == "√"){
+                    let numero = parseFloat(p.operaciones.innerHTML);
+                    
+                    if (numero < 0){
+                        p.operaciones.innerHTML = "Error"
+                    }else{
+                        p.operaciones.innerHTML = Math.sqrt(numero);
+                    }
+                }
+                
+                if (p.digito == "sin"){
+                    let numero = parseFloat(p.operaciones.innerHTML);    
+                    p.operaciones.innerHTML = Math.sin(numero);
+                    break;
+                }
+                
+                if (p.digito == "cos"){
+                    let numero = parseFloat(p.operaciones.innerHTML);
+                    p.operaciones.innerHTML = Math.cos(numero);
+                    break;
+                }
+                
                 let ultimoSigno = p.operaciones.innerHTML.slice(-1);
                 let operadores = ['+', '-', '*', '/'];
 
@@ -77,17 +100,8 @@ let m = {
                 } else {
                     p.operaciones.innerHTML += p.digito;
                 }
-
-                if (p.digito == "√"){
-                    let numero = parseFloat(p.operaciones.innerHTML);
-
-                    if (numero < 0){
-                        p.operaciones.innerHTML = "Error"
-                    }else{
-                        p.operaciones.innerHTML = Math.sqrt(numero);
-                    }
-                }
             break;
+
 
             case "decimal":
                 p.operaciones.innerHTML += p.digito;
