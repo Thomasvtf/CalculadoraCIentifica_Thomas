@@ -91,7 +91,12 @@ let m = {
                     p.operaciones.innerHTML = Math.cos(numero);
                     break;
                 }
-                
+
+                if (p.digito = "x²"){
+                    let numero = parseFloat(p.operaciones.innerHTML);
+                    p.operaciones.innerHTML = Math.pow(numero)
+                }
+
                 let ultimoSigno = p.operaciones.innerHTML.slice(-1);
                 let operadores = ['+', '-', '*', '/'];
 
